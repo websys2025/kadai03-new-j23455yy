@@ -32,14 +32,23 @@
             // 商品購入の関数
             function buyItem(no) {
                 
-                if (items.length < no) {
-                    console.log(`${no} は無効な商品番号です。 0から${item.length}の範囲で指定してください。`)
+                if (items.length < no || no <= 0) {
+                    console.log(`${no} は無効な商品番号です。 0から${items.length}の範囲で指定してください。`)
                 }else {
-                    if (items[no].stock > 0) {
-                        items[no].stock -= 1;
-                        console.log(`${no} を購入しました。`)
+
+                    //入力された番号に一致するitemを取り出す
+                    let item;
+                    for (let i of items) {
+                        if(i.id === no) {
+                            item = i;
+                        }
+                    }
+
+                    if (item.stock > 0) {
+                        item.stock -= 1;
+                        console.log(`${no}: ${item.name} を購入しました。`)
                     }else{
-                        console.log(`${no} は在庫切れです。`);
+                        console.log(`${no}: ${item.name} は在庫切れです。`);
                     }
                 }
                 
