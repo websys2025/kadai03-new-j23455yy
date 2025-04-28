@@ -31,7 +31,18 @@
 
             // 商品購入の関数
             function buyItem(no) {
-                // ここにコードを書く
+                
+                if (items.length < no) {
+                    console.log(`${no} は無効な商品番号です。 0から${item.length}の範囲で指定してください。`)
+                }else {
+                    if (items[no].stock > 0) {
+                        items[no].stock -= 1;
+                        console.log(`${no} を購入しました。`)
+                    }else{
+                        console.log(`${no} は在庫切れです。`);
+                    }
+                }
+                
                 showItemList(); // 商品一覧の表示関数呼び出し
             }
 
